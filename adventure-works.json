@@ -1,10 +1,4 @@
-# Databricks notebook source
-database = "AdventureWorks"
-schema = "dbo"			 		
-tables = [
-# {"schema": 'Dbo'			,"table": 'AWBuildVersion'						    },
-# {"schema": 'Dbo'			,"table": 'DatabaseLog'								},
-# {"schema": 'Dbo'			,"table": 'ErrorLog'								},
+[
 {"schema": 'HumanResources' ,"table": 'Department'								},
 {"schema": 'HumanResources' ,"table": 'Employee'                                },
 {"schema": 'HumanResources' ,"table": 'EmployeeDepartmentHistory'				},
@@ -74,10 +68,3 @@ tables = [
 {"schema": 'Sales'		    ,"table": 'SpecialOfferProduct'						},	
 {"schema": 'Sales'		    ,"table": 'Store'									}
 ]
-
-for table in tables:
-  
-  table["database"]=database
-  ret = dbutils.notebook.run("./load-table", 2600, table)
-  print(f"load {table["database"]}.{table["schema"]}.{table["table"]} {ret}")
-  
