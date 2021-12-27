@@ -1,11 +1,7 @@
 # Databricks notebook source
-print("***************************************************************")
-
-# COMMAND ----------
-
-# dbutils.widgets.text(name="database", defaultValue="contosoretaildw", label="database")
-# dbutils.widgets.text(name="schema", defaultValue="dbo", label="schema")
-# dbutils.widgets.text(name="table", defaultValue="dimaccount", label="table")
+dbutils.widgets.text(name="database", defaultValue="contosoretaildw", label="database")
+dbutils.widgets.text(name="schema", defaultValue="dbo", label="schema")
+dbutils.widgets.text(name="table", defaultValue="dimaccount", label="table")
 
 # COMMAND ----------
 

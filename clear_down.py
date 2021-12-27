@@ -1,4 +1,8 @@
 # Databricks notebook source
+dbutils.widgets.text(name="database", defaultValue="adventure-works", label="database")
+
+# COMMAND ----------
+
 import discover_modules
 from pprint import pprint
 discover_modules.go(spark)
@@ -13,12 +17,14 @@ config.connect_storage()
 # COMMAND ----------
 
 
+data = dbutils.widgets.get("database")
+dbname = data.title().replace("-", "")
 
-# COMMAND ----------
-
-
-dbname = "adventureworks"
-tables = spark.sql(f"show tables in {dbname}").collect()
+try:
+  tables = spark.sql(f"show tables in {dbname}").collect()
+except:
+  dbutils.notebook.exit(f"Database {dbname} Doesn't Exist")
+  
 for t in tables:
   sql = f"DROP TABLE IF EXISTS {t[0]}.{t[1]}"
   print(sql)
